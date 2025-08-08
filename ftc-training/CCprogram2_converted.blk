@@ -199,42 +199,29 @@ In this Tank Drive mode, the left and right joysticks (up and down) drive the le
 <field name="PROP">Power</field>
 <data>{"IDENTIFIER":"LeftWheelMotor"}</data>
 <value name="VALUE">
-<block type="math_single" id="leftMotorPowerCalc">
-<field name="OP">ABS</field>
-<value name="NUM">
-<block type="math_single" id="leftMotorPowerMin">
-<field name="OP">ABS</field>
-<value name="NUM">
-<block type="math_arithmetic" id="leftMotorMinCalc">
-<field name="OP">MINUS</field>
-<value name="A">
-<block type="math_number" id="leftMotorMinValue1">
-<field name="NUM">1</field>
-</block>
-</value>
-<value name="B">
-<block type="math_single" id="leftMotorMinMax">
-<field name="OP">ABS</field>
-<value name="NUM">
-<block type="math_arithmetic" id="leftMotorMaxCalc">
-<field name="OP">MINUS</field>
-<value name="A">
-<block type="variables_get" id="getMaxSpeedForLeft">
-<field name="VAR" id="max_speed_var">max_speed</field>
-</block>
-</value>
-<value name="B">
+<block type="math_constrain" id="leftMotorConstrain">
+<value name="VALUE">
+<shadow type="math_number" id="leftMotorShadowNum">
+<field name="NUM">0</field>
+</shadow>
 <block type="gamepad_getProperty_Number" id="getLeftStickY">
 <field name="IDENTIFIER">gamepad1</field>
 <field name="PROP">LeftStickY</field>
 <data>{"IDENTIFIER":"gamepad1"}</data>
 </block>
 </value>
+<value name="LOW">
+<shadow type="math_number" id="leftLowShadow">
+<field name="NUM">-1</field>
+</shadow>
+<block type="variables_get" id="getMaxSpeedForLeft">
+<field name="VAR" id="max_speed_var">max_speed</field>
 </block>
 </value>
-</block>
-</value>
-</block>
+<value name="HIGH">
+<shadow type="math_number" id="leftHighShadow">
+<field name="NUM">1</field>
+</shadow>
 </value>
 </block>
 </value>
@@ -261,40 +248,29 @@ In this Tank Drive mode, the left and right joysticks (up and down) drive the le
 </block>
 </value>
 <value name="ELSE">
-<block type="math_single" id="rightMotorPowerCalc">
-<field name="OP">ABS</field>
-<value name="NUM">
-<block type="math_single" id="rightMotorPowerMin">
-<field name="OP">ABS</field>
-<value name="NUM">
-<block type="math_arithmetic" id="rightMotorMinCalc">
-<field name="OP">MINUS</field>
-<value name="A">
-<block type="math_number" id="rightMotorMinValue1">
-<field name="NUM">1</field>
-</block>
-</value>
-<value name="B">
-<block type="math_single" id="rightMotorMinMax">
-<field name="OP">ABS</field>
-<value name="NUM">
-<block type="math_arithmetic" id="rightMotorMaxCalc">
-<field name="OP">MINUS</field>
-<value name="A">
-<block type="variables_get" id="getMaxSpeedForRight">
-<field name="VAR" id="max_speed_var">max_speed</field>
-</block>
-</value>
-<value name="B">
+<block type="math_constrain" id="rightMotorConstrain">
+<value name="VALUE">
+<shadow type="math_number" id="rightMotorShadowNum">
+<field name="NUM">0</field>
+</shadow>
 <block type="gamepad_getProperty_Number" id="getRightStickY">
 <field name="IDENTIFIER">gamepad1</field>
 <field name="PROP">RightStickY</field>
 <data>{"IDENTIFIER":"gamepad1"}</data>
 </block>
 </value>
+<value name="LOW">
+<shadow type="math_number" id="rightLowShadow">
+<field name="NUM">-1</field>
+</shadow>
+<block type="variables_get" id="getMaxSpeedForRight">
+<field name="VAR" id="max_speed_var">max_speed</field>
 </block>
 </value>
-</block>
+<value name="HIGH">
+<shadow type="math_number" id="rightHighShadow">
+<field name="NUM">1</field>
+</shadow>
 </value>
 </block>
 </value>
@@ -418,10 +394,7 @@ In this Tank Drive mode, the left and right joysticks (up and down) drive the le
 </statement>
 </block>
 <next>
-<block type="soundPool_close" id="closeSoundPool">
-<field name="IDENTIFIER">androidSoundPoolAsSoundPool</field>
-<data>{"IDENTIFIER":"androidSoundPool"}</data>
-</block>
+<block type="androidSoundPool_close" id="closeSoundPool"/>
 </next>
 </block>
 </next>
