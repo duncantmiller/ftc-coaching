@@ -94,14 +94,10 @@ In this Tank Drive mode, the left and right joysticks (up and down) drive the le
 </shadow>
 </value>
 <next>
-<block type="soundPool_initialize" id="initializeSoundPool">
-<field name="IDENTIFIER">androidSoundPoolAsSoundPool</field>
-<data>{"IDENTIFIER":"androidSoundPool"}</data>
+<block type="androidSoundPool_initialize" id="initializeSoundPool">
 <next>
-<block type="soundPool_setProperty_Number" id="setSoundVolume">
-<field name="IDENTIFIER">androidSoundPoolAsSoundPool</field>
+<block type="androidSoundPool_setProperty_Number" id="setSoundVolume">
 <field name="PROP">Volume</field>
-<data>{"IDENTIFIER":"androidSoundPool"}</data>
 <value name="VALUE">
 <shadow type="math_number" id="soundVolumeValue">
 <field name="NUM">1</field>
@@ -126,12 +122,10 @@ In this Tank Drive mode, the left and right joysticks (up and down) drive the le
 <next>
 <block type="linearOpMode_waitForStart" id="waitForStartBlock">
 <next>
-<block type="soundPool_play" id="playSoundAlarm">
-<field name="IDENTIFIER">androidSoundPoolAsSoundPool</field>
-<data>{"IDENTIFIER":"androidSoundPool"}</data>
-<value name="SOUND_ID">
-<shadow type="text" id="alarmSoundId">
-<field name="TEXT">RawRes:ss_alarm</field>
+<block type="androidSoundPool_play" id="playSoundAlarm">
+<value name="SOUND_NAME">
+<shadow type="androidSoundPoolSkyStone_typedEnum_soundResource" id="alarmSoundId">
+<field name="SOUND_RESOURCE">ss_alarm</field>
 </shadow>
 </value>
 <next>
@@ -159,6 +153,7 @@ In this Tank Drive mode, the left and right joysticks (up and down) drive the le
 <block type="gamepad_getProperty_Boolean" id="checkGamepadA">
 <field name="IDENTIFIER">gamepad1</field>
 <field name="PROP">A</field>
+<data>{"IDENTIFIER":"gamepad1"}</data>
 </block>
 </value>
 <statement name="DO0">
@@ -232,6 +227,7 @@ In this Tank Drive mode, the left and right joysticks (up and down) drive the le
 <block type="gamepad_getProperty_Number" id="getLeftStickY">
 <field name="IDENTIFIER">gamepad1</field>
 <field name="PROP">LeftStickY</field>
+<data>{"IDENTIFIER":"gamepad1"}</data>
 </block>
 </value>
 </block>
@@ -293,6 +289,7 @@ In this Tank Drive mode, the left and right joysticks (up and down) drive the le
 <block type="gamepad_getProperty_Number" id="getRightStickY">
 <field name="IDENTIFIER">gamepad1</field>
 <field name="PROP">RightStickY</field>
+<data>{"IDENTIFIER":"gamepad1"}</data>
 </block>
 </value>
 </block>
@@ -319,6 +316,7 @@ In this Tank Drive mode, the left and right joysticks (up and down) drive the le
 <block type="gamepad_getProperty_Number" id="getGamepad2RightStickY">
 <field name="IDENTIFIER">gamepad2</field>
 <field name="PROP">RightStickY</field>
+<data>{"IDENTIFIER":"gamepad2"}</data>
 </block>
 </value>
 <value name="B">
@@ -389,6 +387,7 @@ In this Tank Drive mode, the left and right joysticks (up and down) drive the le
 <block type="gamepad_getProperty_Boolean" id="getGamepadB">
 <field name="IDENTIFIER">gamepad1</field>
 <field name="PROP">B</field>
+<data>{"IDENTIFIER":"gamepad1"}</data>
 </block>
 </value>
 </block>
@@ -474,3 +473,8 @@ In this Tank Drive mode, the left and right joysticks (up and down) drive the le
 </statement>
 </block>
 </xml>
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<Extra>
+<OpModeMeta flavor="TELEOP" group="" autoTransition="" />
+<Enabled value="true" />
+</Extra>
